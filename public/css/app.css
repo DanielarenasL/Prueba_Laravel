@@ -1,0 +1,161 @@
+/* ===== ESTILOS ESPECÍFICOS PARA INDEX.BLADE.PHP ===== */
+
+/* Contenedor principal de clientes */
+.clientes {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Título de la página */
+.clientes h1 {
+    color: #495057;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 15px;
+}
+
+/* Estilos para la tabla de clientes */
+.tabla_clientes {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Encabezados de la tabla */
+.tabla_clientes thead {
+    background-color: #f8f9fa;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.tabla_clientes th {
+    padding: 18px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+/* Celdas del cuerpo de la tabla */
+.tabla_clientes td {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 14px;
+    color: #6c757d;
+    transition: all 0.2s ease;
+}
+
+/* Filas del cuerpo */
+.tabla_clientes tbody tr {
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+}
+
+/* Efecto hover en las filas */
+.tabla_clientes tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Estilos alternados para las filas */
+.tabla_clientes tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.tabla_clientes tbody tr:nth-child(even):hover {
+    background-color: #f8f9fa;
+}
+
+/* Estilos específicos para cada columna */
+.tabla_clientes th:nth-child(1),
+.tabla_clientes td:nth-child(1) {
+    width: 8%;
+    text-align: center;
+    font-weight: bold;
+    color: #6c757d;
+}
+
+.tabla_clientes th:nth-child(2),
+.tabla_clientes td:nth-child(2) {
+    width: 20%;
+    font-weight: 500;
+    color: #495057;
+}
+
+.tabla_clientes th:nth-child(3),
+.tabla_clientes td:nth-child(3) {
+    width: 25%;
+    color: #6c757d;
+}
+
+.tabla_clientes th:nth-child(4),
+.tabla_clientes td:nth-child(4) {
+    width: 15%;
+    color: #6c757d;
+}
+
+.tabla_clientes th:nth-child(5),
+.tabla_clientes td:nth-child(5) {
+    width: 16%;
+    color: #6c757d;
+    font-size: 13px;
+}
+
+.tabla_clientes th:nth-child(6),
+.tabla_clientes td:nth-child(6) {
+    width: 16%;
+    color: #6c757d;
+    font-size: 13px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .clientes {
+        padding: 10px;
+    }
+
+    .clientes h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .tabla_clientes {
+        font-size: 12px;
+        border-radius: 8px;
+    }
+
+    .tabla_clientes th,
+    .tabla_clientes td {
+        padding: 10px 8px;
+    }
+
+    .tabla_clientes th:nth-child(5),
+    .tabla_clientes td:nth-child(5),
+    .tabla_clientes th:nth-child(6),
+    .tabla_clientes td:nth-child(6) {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabla_clientes {
+        font-size: 11px;
+    }
+
+    .tabla_clientes th,
+    .tabla_clientes td {
+        padding: 8px 5px;
+    }
+}
