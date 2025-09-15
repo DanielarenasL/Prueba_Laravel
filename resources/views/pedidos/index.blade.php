@@ -24,12 +24,11 @@
                     </thead>
                     <tbody>
                         @foreach($pedidos as $pedido)
-                        <tr>
+                        <tr onclick="window.location = '{{ route('pedidos.detalle', $pedido->id) }}'">
                             <td>{{ $pedido->id }}</td>
                             <td>{{ $pedido->cliente->nombre }}</td>
                             <td>{{ $pedido->fecha }}</td>
                             <td>{{ $pedido->total }}</td>
-                            
                         </tr>
                         @endforeach
                     </tbody>

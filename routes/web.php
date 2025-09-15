@@ -57,3 +57,6 @@ Route::get('/pedidos', [PedidoController::class, 'get'])->name('pedidos.index');
 //* Create
 Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create');
 Route::post('/pedidos/save', [PedidoController::class, 'save'])->name('pedidos.save');
+
+//* Get detalles del pedido
+Route::get('/pedidos/detalle/{id}', [PedidoController::class, 'get_detalle'])->name('pedidos.detalle');
