@@ -4,6 +4,8 @@ use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\PedidoController;
+
 
 
 //* -------------------------Rutas para Cliente-----------------------------
@@ -38,5 +40,20 @@ Route::post('/productos/save', [ProductoController::class, 'save'])->name('produ
 //* Delete
 Route::delete('/productos/delete/{id}', [ProductoController::class, 'delete'])->name('productos.delete');
 
+//* Agregar stock
+Route::put('productos/agregar/{id}', [ProductoController::class, 'agregar'])->name('productos.agregar');
+
+//* Update
+Route::get('/productos/edit/{id}', [ProductoController::class, 'edit'])->name('productos.edit');
+Route::put('/productos/update/{id}', [ProductoController::class, 'update'])->name('productos.update');
 
 
+//* ---------------------------------Rutas para pedido----------------------
+
+
+//* GET
+Route::get('/pedidos', [PedidoController::class, 'get'])->name('pedidos.index');
+
+//* Create
+Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create');
+Route::post('/pedidos/save', [PedidoController::class, 'save'])->name('pedidos.save');

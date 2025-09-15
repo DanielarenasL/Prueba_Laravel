@@ -16,14 +16,14 @@
                 @method('PUT')
 
                 <label>Nombre:</label>
-                <input type="text" name="nombre" value="{{ $cliente->nombre }}">
+                <input type="text" name="nombre" value="{{ $cliente->nombre }}" required>
 
                 <label>Email:</label>
-                <input type="text" name="email" value="{{ $cliente->email }}">
+                <input type="text" name="email" value="{{ $cliente->email }}" required>
 
 
                 <label>Telefono:</label>
-                <input type="number" name="telefono" value="{{ $cliente->telefono }}">
+                <input type="number" name="telefono" value="{{ $cliente->telefono }}" required>
 
                 <button type="submit">Actualizar</button>
             </form>

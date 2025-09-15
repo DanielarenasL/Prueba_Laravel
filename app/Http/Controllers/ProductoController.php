@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Producto;
+use App\Models\Producto;//*
 
 
 class ProductoController extends Controller
@@ -59,7 +59,8 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('success', 'Producto eliminado correctamente');
 
     }
-
+    
+    //? Funcional
     //* Agregar stock
     public function agregar($id, Request $request) {
         $request-> validate([
@@ -77,6 +78,42 @@ class ProductoController extends Controller
         $producto->save();
 
         return redirect()->route('productos.index')->with('success', 'Stock agregado correctamente');
+    }
+
+    //* Edit
+    public function edit($id){
+
+        $producto = Producto::find($id);
+
+        if (!$producto) {
+            return redirect()->route('productos.index')->with('error', 'Producto no encontrado');
+        }
+
+        return view('productos.update', compact('producto'));
+    }
+
+    //? Funcional
+    //* Actualizar producto
+    public function update($id, Request $request) {
+        $request->validate([
+            'nombre' => 'required|string|max:100',
+            'precio' => 'required|numeric|min:1',
+            'stock' => 'required|numeric|min:0'
+        ]);
+
+        $producto = Producto::find($id);
+
+        if (!$producto) {
+            return redirect()->route('productos.index')->with('error', 'Producto no encontrado');
+        }
+
+        $producto->update([
+            'nombre' => $request->nombre,
+            'precio' => $request->precio,
+            'stock' => $request->stock
+        ]);
+
+        return redirect()->route('productos.index')->with('success', 'Producto actualizado correctamente');
     }
 
 }

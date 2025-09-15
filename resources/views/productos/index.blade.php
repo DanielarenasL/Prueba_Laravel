@@ -30,13 +30,23 @@
                             <td>{{ $producto->precio }}</td>
                             <td>{{ $producto->stock }}</td>
                             <td>
+                                <form action="{{ route('productos.agregar', $producto->id) }}" method="POST" style="display:inline">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="number" name="cantidad" min="1" placeholder="Cantidad" required>
+                                    <button type="submit" class="btn-primary">Agregar stock</button>
+                                </form>
+                            </td>
+                            <td>
+                                <button onclick="window.location = '{{ route('productos.edit', $producto->id) }}'" class="btn-primary">Editar</button>
+                            </td>
+                            <td>
                                 <form action="{{ route('productos.delete', $producto->id) }}" method="POST" style="display:inline">
                                     @csrf
                                     @method('DELETE')
                                         <button type="submit" class="btn-danger" onclick="return confirm('¿Seguro de que deseas eliminar este producto?')">Eliminar</button>
                                 </form>
                             </td>
-                            
                         </tr>
                         @endforeach
                     </tbody>
