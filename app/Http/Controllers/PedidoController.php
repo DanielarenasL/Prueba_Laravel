@@ -35,18 +35,15 @@ class PedidoController extends Controller
 
     //* Guardar pedido
     public function save(Request $request) {
-        // Validación del pedido
         $request->validate([
             'cliente_id' => 'required|numeric',
             'fecha' => 'required|date',
             'total' => 'required|numeric|min:1'
         ]);
 
-        // Crear el pedido principal
         $pedido = Pedido::create($request->only('cliente_id', 'fecha', 'total'));
         $pedido_id = $pedido->id;
 
-        // Validación de los productos
         $request->validate([
             'producto_id' => 'required|array|min:1',
             'producto_id.*' => 'required|numeric',
@@ -58,11 +55,9 @@ class PedidoController extends Controller
             'subtotal.*' => 'required|numeric|min:1'
         ]);
 
-        // Guardar cada producto en PedidoDetalle y descontar stock
         foreach($request->producto_id as $index => $producto_id) {
             $cantidad = $request->cantidad[$index];
 
-            // Crear detalle del pedido
             PedidoDetalle::create([
                 'pedido_id' => $pedido_id,
                 'producto_id' => $producto_id,
@@ -71,11 +66,10 @@ class PedidoController extends Controller
                 'subtotal' => $request->subtotal[$index]
             ]);
 
-            // Descontar stock del producto
             $producto = Producto::find($producto_id);
             if ($producto) {
                 $producto->stock -= $cantidad;
-                if ($producto->stock < 0) $producto->stock = 0; // prevenir stock negativo
+                if ($producto->stock < 0) $producto->stock = 0; 
                 $producto->save();
             }
         }
