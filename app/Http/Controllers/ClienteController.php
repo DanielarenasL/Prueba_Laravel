@@ -7,13 +7,15 @@ use App\Models\Cliente;
 
 class ClienteController extends Controller
 {
-    //* Obtener todos los clientes
+    // ? Funcional 
+    //* Obtener todos los clientes 
     public function get_clientes(){
         $clientes = Cliente::all();
         return view('clientes.index', compact('clientes'));
     }
 
-    //* Obtener cliente por id
+    //? Funcional
+    //* Obtener cliente por id 
     public function get_ByID($id){
         $cliente = Cliente::find($id);
 
@@ -23,11 +25,13 @@ class ClienteController extends Controller
         return view('clientes.show', compact('cliente'));
     }
 
+    // ? Funcional
     //* Crear cliente
     public function create() {
         return view('clientes.create');
     }
 
+    //? Funcional
     //* Guardar cliente
     public function save(Request $request){
         $request->validate([
@@ -41,7 +45,8 @@ class ClienteController extends Controller
         return redirect()->route('clientes.index')->with('success', 'Cliente creado correctamente');
     }
 
-    //* Eliminar cliente
+    //? Funcional 
+    //* Eliminar cliente    
     public function delete($id){
         $cliente = Cliente::find($id);
 
@@ -54,17 +59,29 @@ class ClienteController extends Controller
         return redirect()->route('clientes.index')->with('success', 'Cliente eliminado correctamente');
     }
 
+    //? Funcional
+    //* Edit
+    public function edit($id) {
 
-    //* Actualizar cliente
-    public function update_client(Request $request) {
+        $cliente = Cliente::find($id);
+
+        if (!$cliente) {
+            return redirect()->route('clientes.index')->with('error', 'Cliente no encontrado');
+        }
+
+        return view('clientes.update', compact('cliente'));
+    }
+
+    //? Funcional
+    //* Actualizar cliente 
+    public function update($id, Request $request) {
         $request->validate([
-            'id' => 'required|numeric',
             'nombre' => 'required|string|max:100',
             'email' => 'required|string|max:100',
             'telefono' => 'required|numeric'
         ]);
 
-        $cliente = Cliente::find($request->id);
+        $cliente = Cliente::find($id);
 
         if (!$cliente) {
             return redirect()->route('clientes.index')->with('error', 'Cliente no encontrado');

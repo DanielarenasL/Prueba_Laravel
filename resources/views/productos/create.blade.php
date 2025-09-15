@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="form-container">
-        <h1 style="padding-top: 50px">Crear usuario</h1>
+        <h1 style="padding-top: 50px">Crear producto</h1>
 
-        <form action="{{ route('clientes.save') }}" method="POST">
+        <form action="{{ route('productos.save') }}" method="POST">
             @csrf
 
             <div class="form-group">
@@ -13,20 +13,20 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label">Email:</label>
-                <input type="email" name="email" class="form-control">
+                <label class="form-label">Precio:</label>
+                <input type="number" name="precio" min="1" class="form-control">
             </div>
             
 
             <div class="form-group">
-                <label class="form-label">Teléfono:</label>
-                <input type="number" name="telefono" class="form-control">
+                <label class="form-label">Stock:</label>
+                <input type="number" name="stock" min="0" class="form-control">
             </div>
             
 
             <button type="submit" class="btn btn-success">Crear</button>
         </form>
-        <button class="btn btn-primary" onclick="window.location='{{ route('clientes.index') }}'">Volver</button>
+        <button class="btn btn-primary" onclick="window.location='{{ route('productos.index') }}'">Volver</button>
 
     </div>
     

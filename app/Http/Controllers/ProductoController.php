@@ -8,6 +8,7 @@ use App\Models\Producto;
 
 class ProductoController extends Controller
 {
+    //? Funcional
     //* Obtener todos los productos
     public function get() {
         $productos = Producto::all();
@@ -24,11 +25,13 @@ class ProductoController extends Controller
         return view('productos.show', compact('producto'));
     }
 
+    //? Funcional
     //* Crear producto
     public function create() {
         return view('productos.create');
     }
 
+    //? Funcional
     //* Guardar producto
     public function save(Request $request) {
         $request-> validate([
@@ -42,6 +45,7 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('success', 'Producto creado correctamente');
     }
 
+    //? Funcional
     //* Eliminar producto
     public function delete($id) {
         $producto = Producto::find($id);
